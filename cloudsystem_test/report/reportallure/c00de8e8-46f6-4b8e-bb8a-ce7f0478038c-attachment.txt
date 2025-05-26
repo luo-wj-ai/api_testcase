@@ -1,0 +1,2 @@
+{"contractRoot":{"head":{"transactionId":"3adadc72ceec44eda1e656fa45e6791c","reqTime":"20250120163910824","sign":""},"body":{"resultCode":"1","resultMsg":"退货成功","recoId":"edc62caf32a24b2c9549293e03b5aeef"}}}
+{'Server': 'nginx', 'Date': 'Mon, 20 Jan 2025 08:39:10 GMT', 'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding', 'X-Trace-Id': 'b68321c9d89644da979cc8317d48ab7c', 'Content-Encoding': 'gzip'}

@@ -1,0 +1,40 @@
+customerId: 3HLTgEEdUgKJ1/MTvmjmHg==
+P:
+  reqParam:
+    billDate: '20230426'
+    channelId: '138'
+    coProductAttrs:
+    - busiType: ''
+      code: '2022999500000772'
+      issueType: '2'
+      name: 和彩云会员测试
+      orgCode: '9995'
+      settlementRatio: 85
+      shareRatio: 100
+      type: '5'
+    jfOrderId: R100000002199201289
+    notifyType: 1
+    notifyiResult: 0
+    oprTime: '20230426172933'
+    oprType: '01'
+    orderItemList:
+    - customerId: 3HLTgEEdUgKJ1/MTvmjmHg==
+      customerType: '1'
+      effectTime: '20241120185900'
+      expireTime: '20241129145900'
+      goodsId: '100058896259'
+      goodsName: 咪咕融合业务包-融合支付
+      jfSubOrderId: R10000000215075
+      quantity: '1'
+    orderTime: '20230426172933'
+    outOrderId: 76666659657824953189486175
+    pubInfo:
+      msgVer: '1.0'
+      reqTime: '20230426172918'
+      systemCode: PDC
+    useBill: ''
+    usePoint: ''
+  sign: MCwCFB60foTBTR2342322249956456923423K66yRkfg==
+stoken: YZsidssolgdc9630eadd39da3742b60ba474b1c5c8
+timestamp: '1735606870'
+sign: 6P5AY/8qIxMAi/lHX0AnG80OGFc9wq52qYeeJcYxtDQ=

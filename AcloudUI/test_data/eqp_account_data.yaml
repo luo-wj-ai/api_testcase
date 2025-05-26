@@ -1,0 +1,14 @@
+- name: "不为空"
+  user_account: "123"
+  expect_text: "用户已存在"
+  locator: "/html/body/div[5]/div/h2"
+
+- name: "新增成功"
+  user_account: "12345"
+  expect_text: "新增成功"
+  locator: '//p[text()="新增成功"]'
+
+- name: "为空"
+  user_account: ""
+  expect_text: "用户账号不能为空"
+  locator: "/html/body/div[2]/div/div[2]/form/div[1]/div[2]/div/div/div[2]"

@@ -1,0 +1,20 @@
+[
+    {
+        "name":"用户已存在场景",
+        "input_data":{"useraccount":"15618332741"},
+        "expect_text":"用户已存在",
+        "locator":"(By.XPATH","/html/body/div[5]/div/h2")
+    },
+    {
+        "name":"手机号错误场景",
+        "input_data":{"useraccount":"12"},
+        "expect_text":"请输入正确的手机号码",
+        "locator":"(By.XPATH","/html/body/div[5]/div/h2")
+    },
+    {
+        "name":"账号黑名单场景",
+        "input_data":{"useraccount":"1233"},
+        "expect_text":"该用户账号属于黑名单，暂不支持创建",
+        "locator":"(By.XPATH","/html/body/div[8]/p")
+    }
+]

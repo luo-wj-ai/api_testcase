@@ -1,0 +1,2 @@
+{"data":null,"header":{"errMsg":"订购失败，库存不足","status":"502004"}}
+{'Server': 'nginx', 'Date': 'Mon, 20 Jan 2025 08:39:12 GMT', 'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding', 'X-Trace-Id': '2f9dc90540f34816a4ebe59edb004cd1', 'Content-Encoding': 'gzip'}

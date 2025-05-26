@@ -1,0 +1,1 @@
+{"data":{"total":1,"pageIndex":1,"pageSize":10,"records":[{"id":135,"packageName":"自动化测试","appType":2,"version":"8.8.8.20241201","versionNum":888,"downloadURL":"111","fileSize":"60","isForce":false,"content":"自动化测试","states":false,"createTime":"2024-12-31 08:58:22"}]},"header":{"errMsg":"成功","status":"200"}}

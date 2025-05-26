@@ -1,0 +1,11 @@
+#订单模块-查询
+- true_testcase:
+  order_id:
+  subsAccount: 15013957569
+  order_type:
+  status:
+- fail_testcase:
+    order_id:
+    subsAccount:
+    order_type:
+    status:

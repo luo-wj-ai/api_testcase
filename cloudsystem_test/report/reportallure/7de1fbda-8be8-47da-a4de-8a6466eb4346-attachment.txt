@@ -1,0 +1,2 @@
+{"message":"OK","status":"200","data":{"sign":"MC0CFARK39TZRBcsXV7LaL8P91whKje2AhUAqUI/STMakRqAzdQ8qPMvHpl17xA=","rspParam":{"pubInfo":{"returnCode":"0","returnMsg":"成功","msgVer":"1.0","rspTime":"20241231085829"}}}}
+{'Server': 'nginx', 'Date': 'Tue, 31 Dec 2024 00:58:29 GMT', 'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding', 'X-Trace-Id': '12bd9995864543cbb11e76c6eff060c7', 'Content-Encoding': 'gzip'}

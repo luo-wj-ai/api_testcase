@@ -1,0 +1,4 @@
+{"data":{"result":true},"header":{"errMsg":"成功","status":"200"}}
+{'Server': 'nginx', 'Date': 'Mon, 20 Jan 2025 08:39:11 GMT', 'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding', 'X-Trace-Id': 'c9eb0360f7e6470886e0a5a23ba54106', 'Content-Encoding': 'gzip'}
+{"data":null,"header":{"errMsg":"订购失败，库存不足","status":"502004"}}
+{'Server': 'nginx', 'Date': 'Mon, 20 Jan 2025 08:39:11 GMT', 'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding', 'X-Trace-Id': '0b1d8b9c9da44a868c5301508c937759', 'Content-Encoding': 'gzip'}

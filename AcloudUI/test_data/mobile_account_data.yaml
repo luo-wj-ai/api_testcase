@@ -1,0 +1,23 @@
+#- name: "用户已存在场景"
+#  user_account: "14745852020"
+#  expect_text: "新增成功"
+#  locator: "//p[text()="新增成功"]"
+- name: "不为空"
+  user_account: "15618332741"
+  expect_text: "用户已存在"
+  locator: "/html/body/div[5]/div/h2"
+
+- name: "手机号错误场景"
+  user_account: "12"
+  expect_text: "请输入正确的手机号码"
+  locator: "/html/body/div[5]/div/h2"
+
+- name: "黑名单"
+  user_account: "1233"
+  expect_text: "该用户账号属于黑名单，暂不支持创建"
+  locator: "/html/body/div[8]/p"
+
+- name: "为空"
+  user_account: ""
+  expect_text: "用户账号不能为空"
+  locator: "/html/body/div[2]/div/div[2]/form/div[1]/div[2]/div/div/div[2]"
