@@ -51,5 +51,13 @@
 ```
 运行接口测试，先cd进入cloudsystem_test目录
 python test_all.py
+运行UI测试，直接在api的目录即可
+python -m unittest AcloudUI.test_case.test_usermanagement
 ```
-
+## 其他
+```
+{fix}:修改BUG
+{feat}:添加新功能
+{docs}：文档编写
+{style}：代码优化
+```
