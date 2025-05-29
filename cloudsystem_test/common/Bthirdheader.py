@@ -9,6 +9,7 @@ def generate_snowflake_id():
     return str(timestamp) + str(random_num)
 
 
+
 app_key = "gitsqTTQ3pnEvFyC"
 app_id = "Q0NylSZ7hj"
 
@@ -17,7 +18,7 @@ request_id = generate_snowflake_id()
 sign_str = app_key + app_id + request_id + str(timestamp) + app_key
 signature = hashlib.md5(sign_str.encode()).hexdigest()
 
-# print("x-request-id:", request_id)
-# print("x-timestamp:", timestamp)
-# print("x-signature:", signature)
+print("x-request-id:", request_id)
+print("x-timestamp:", timestamp)
+print("x-signature:", signature)
 

@@ -8,7 +8,7 @@ from cloudsystem_test.config.dataportal import write_yaml, read_yaml, clear_yaml
 import logging
 
 #云手机运营后台token
-headers=h
+headers=h()
 #清空yaml文件
 clear_yaml()
 #配置日志记录器

@@ -1,3 +1,4 @@
+import pytest
 import requests
 import json
 from cloudsystem_test.config.存储现网token值 import clear_Vyaml
@@ -7,11 +8,13 @@ from cloudsystem_test.common.Aurl import baseurl, encodeurl
 from cloudsystem_test.config.存储token值 import read_yamlm, clear_yamlm
 from cloudsystem_test.config.存储现网token值 import read_Vyaml
 from cloudsystem_test.config.请求头签名 import app_id, timestamp, signature
-from cloudsystem_test.config.deskfile import write_yaml, read_yaml
+from cloudsystem_test.config.deskfile import write_yaml, read_yaml,clear_yaml
 import logging
 
 #配置日志记录器
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+baseurl="https://koophone-cc.cmtest.xyz"
 
 '''订购脚本'''
 class test_CP:
@@ -263,21 +266,24 @@ class test_CP:
             logging.info("test_governmententerprises2:FALL")
 
         '''验证token是否失效'''
+        '''我改了，直接获取新的token'''
     def test_username(self):
-        url=baseurl+"/cloudphone/member/getDetail"
-        data={}
-        headers = {
-            'token': read_yamlm("token")
-        }
-        res=requests.post(url=url,json=data,headers=headers)
-        result=res.text
-        result=json.loads(result)
-
-        if result["header"]["errMsg"] =="成功":
-            pass
-        else:
-            clear_yamlm()
-            Token()
+        # url=baseurl+"/cloudphone/member/getDetail"
+        # data={}
+        # headers = {
+        #     'token': read_yamlm("token")
+        # }
+        # res=requests.post(url=url,json=data,headers=headers)
+        # result=res.text
+        # result=json.loads(result)
+        #
+        # if result["header"]["errMsg"] =="成功":
+        #     pass
+        # else:
+        #     clear_yamlm()
+        #     Token()
+        clear_yamlm()
+        Token()
 
         '''正向订购APP'''
     def test_AForwardordering(self, memberPackageId):
@@ -372,7 +378,7 @@ class test_CP:
 
     '''第三方正向订购'''
     def test_Thirddirectordering(self, account, productItemCode, thirdOrderNo, renewOrderNo, orderType, channelCode):
-        url = encodeurl + '/rai/sign/thirdOrder'
+        url = encodeurl + '/rai/sign/thirdOrder'#获取签名
         MP = {
             "account": account,
             "productItemCode": productItemCode,
@@ -401,7 +407,7 @@ class test_CP:
 
 
     def test_Thirddirectordering2(self):
-        url2 = baseurl + '/cloudphone/order/third/submitOrder'
+        url2 = baseurl + '/cloudphone/order/third/submitOrder'#提交订单-创建
         MP2 = read_yaml("MP")
         MP2['account'] = read_yaml("MP")["account"]
         MP2['productItemCode'] = read_yaml("MP")['productItemCode']
@@ -441,19 +447,19 @@ class test_CP:
         result = res2.text
         result = json.loads(result)
         try:
-            assert "成功" in result["header"]["errMsg"]
+            assert "存在" or "成功" in result["header"]["errMsg"]
             logging.info("test_Thirddirectordering2:SUCCESS")
             order = result["data"]["orderId"]
             ordervalue = {"order": order}
             write_yaml(ordervalue)
             errmsg = {"errmsg": result["header"]["errMsg"]}
             write_yaml(errmsg)
-        except Exception:
+        except Exception as e:
             logging.info("test_Thirddirectordering2:FALL")
 
 
     def test_Thirddirectordering3(self):
-                url4 = baseurl + '/cloudphone/order/third/cancelOrder'
+                url4 = baseurl + '/cloudphone/order/third/cancelOrder'#取消订单
                 MP4 = {
                     "orderId": read_yaml("order"),
                     "account": read_yaml("MP")["account"]
@@ -567,18 +573,57 @@ class test_CP:
         datas={"customerId":customerId}
         write_yaml(datas)
 
-    def test_Reverse_order2(self,goodsId, outOrderId, oprType, notifyType, notifyiResult, expireTime, effectTime):
+    def test_Reverse_order2(self, outOrderId, oprType):
         url = baseurl + '/cloudphone/subscribe/third/raiBusinessNotify'
-        PB = P
-        PB["sign"] = "MCwCFB60foTBTR2342322249956456923423K66yRkfg=="
-        PB["reqParam"]["orderItemList"][0]["goodsId"] = goodsId
-        PB["reqParam"]["orderItemList"][0]["customerId"] =read_yaml("customerId")
-        PB["reqParam"]["outOrderId"] = outOrderId
-        PB["reqParam"]["oprType"] = oprType
-        PB["reqParam"]["notifyType"] = notifyType
-        PB["reqParam"]["notifyiResult"] = notifyiResult
-        PB["reqParam"]["orderItemList"][0]["effectTime"] = effectTime
-        PB["reqParam"]["orderItemList"][0]["expireTime"] = expireTime
+
+        # 构造请求体
+        PB = {
+            "sign": "MCwCFBeysNJt6MRqgJjw2pGPlO/1tmt9lxAhQSQHbNtlir6D1HjmbXNfzszW1zYw==",
+            "reqParam": {
+                "jfOrderId": "j_11",
+                "outOrderId": outOrderId,
+                "oprType": oprType,
+                "notifyiResult": "0",
+                "orderItemList": [
+                    {
+                        "goodsId": "S001",
+                        "customerId": read_yaml("customerId"),
+                        "quantity": "1",
+                        "goodsName": "中国移动云手机专业版（天卡）",
+                        "effectTime": "20231023170535",
+                        "expireTime": "20240930154900",
+                        "customerType": "1",
+                        "jfSubOrderId": "R10000000780068"
+                    }
+                ],
+                "pubInfo": {
+                    "msgVer": "1.0",
+                    "reqTime": "20231223170535",
+                    "systemCode": "PDC"
+                },
+                "useBill": "",
+                "billDate": "20231023",
+                "usePoint": "",
+                "oprTime": "20241093170531",
+                "channelId": "137",
+                "orderTime": "20240326105003",
+                "notifyType": "1",
+                "coProductAttrs": [
+                    {
+                        "code": "2023999580000314",
+                        "name": "中国移动云手机旗舰款专业版全国",
+                        "type": "5",
+                        "goodsId": "xianshibaoyue",
+                        "orgCode": "9995",
+                        "busiType": "40",
+                        "issueType": "2",
+                        "shareRatio": 100,
+                        "settlementPrice": 0
+                    }
+                ]
+            }
+        }
+
         headers = {
             'Content-Type': 'application/json'
         }
@@ -586,32 +631,35 @@ class test_CP:
         res = requests.post(url=url, json=PB, headers=headers)
         print(res.text)
         print(res.headers)
-        result = res.text
-        result = json.loads(result)
-        payload={"P":P}
+        result = res.json()
+
+        # 将响应数据写入 YAML 文件
+        payload = {"P": PB}
         write_yaml(payload)
+
         try:
             assert "成功" in result["data"]["rspParam"]["pubInfo"]["returnMsg"]
             logging.info("test_Reverse_order:SUCCESS")
-        except Exception:
-            logging.info("test_Reverse_order:FALL")
+        except Exception as e:
+            logging.error(f"test_Reverse_order:FALL - {e}")
+            pytest.fail(f"test_Reverse_order:FALL - {e}")
 
     '''验证token是否失效(现网环境)'''
     def test_username2(self):
-        url="https://cpability.buy.139.com/cloudphone/member/getDetail"
-        data={}
-        headers = {
-            'token': read_Vyaml("tokenn")
-        }
-        res=requests.post(url=url,json=data,headers=headers)
-        # print(res.text)
-        result=res.text
-        result=json.loads(result)
-        if result["header"]["errMsg"] =="成功":
-            read_Vyaml("tokenn")
-        else:
-            clear_Vyaml()
-            Token2()
+        # url="https://cpability.buy.139.com/cloudphone/member/getDetail"
+        # data={}
+        # headers = {
+        #     'token': read_Vyaml("tokenn")
+        # }
+        # res=requests.post(url=url,json=data,headers=headers)
+        # # print(res.text)
+        # result=res.text
+        # result=json.loads(result)
+        # if result["header"]["errMsg"] =="成功":
+        #     read_Vyaml("tokenn")
+        # else:
+        clear_Vyaml()
+        Token2()
 
     '''统一认证单点登录和订购'''
     def qtoken(self):

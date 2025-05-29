@@ -18,6 +18,6 @@ app_id = "fF3iE0cA2cA5kC1cB3pB2bE2gL1cA1sd"
 app_key = "hC0fT4qD0lB2aU2vD0bB0hD1aD2eC5df"
 timestamp = str(int(time.time()))
 signature = generate_hmac_sha256(app_id, app_key, timestamp)
-# print("app_id:",app_id)
-# print("timestamp:", timestamp)
-# print("Signature:", "third_sys "+signature)
+print("app_id:",app_id)
+print("timestamp:", timestamp)
+print("Signature:", "third_sys "+signature)

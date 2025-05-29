@@ -1,10 +1,11 @@
 
 '''''广州测试环境'''''
-baseurl="http://cc-hwy.cmtest.xyz"
+# baseurl="http://cc-hwy.cmtest.xyz"
+baseurl="https://koophone-cc.cmtest.xyz:8080"
 
 '''使用jar包获取签名'''
-encodeurl="http://127.0.0.1:8899"
-# encodeurl="http://sbo.cmtest.xyz/cloudphone-sign"
+# encodeurl="http://127.0.0.1:8899"
+encodeurl="http://sbo.cmtest.xyz/cloudphone-sign"
 
 '''开发测试环境'''
 # baseurl="http://cc-dev.cmtest.xyz"

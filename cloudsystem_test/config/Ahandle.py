@@ -4,24 +4,24 @@ import requests
 import json
 from cloudsystem_test.common.Aheaders import Token
 from cloudsystem_test.common.Aurl import baseurl
-from cloudsystem_test.config.存储token值 import read_yamlm#clear_yamlm
+from cloudsystem_test.config.存储token值 import read_yamlm,clear_yamlm
 
 '''验证token是否失效'''
 class test_CP:
     def test_username(self):
-        url = baseurl + "/cloudphone/member/getDetail"
-        data = {}
-        headers = {
-            'token': read_yamlm('token1')
-        }
-        res = requests.post(url=url, json=data, headers=headers)
-        result = res.text
-        result = json.loads(result)
-        if result["header"]["errMsg"] == "成功":
-            print(read_yamlm("token1"))
-        else:
-            clear_yamlm()
-            # Token()
+        # url = baseurl + "/cloudphone/member/getDetail"
+        # data = {}
+        # headers = {
+        #     'token': read_yamlm('token1')
+        # }
+        # res = requests.post(url=url, json=data, headers=headers)
+        # result = res.text
+        # result = json.loads(result)
+        # if result["header"]["errMsg"] == "成功":
+        #     print(read_yamlm("token1"))
+        # else:
+        clear_yamlm()
+        Token()
 #     '''获取OS临时票据'''
 #     def tmktoken(self):
 #         test_CP().test_username()

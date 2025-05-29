@@ -1,7 +1,7 @@
 import allure
 import pytest
 import requests
-from cloudsystem_test.common.Aheaders import h
+from cloudsystem_test.common.Aheaders import h, Get_Authorization
 from cloudsystem_test.common.Aurl import baseurl
 import json
 from cloudsystem_test.config.Amobile import generate_phone_number
@@ -9,21 +9,23 @@ from cloudsystem_test.config.dataportal import write_yaml, read_yaml, clear_yaml
 import logging
 
 #云手机运营后台token
-headers=h
+headers02=h(update=True)
+headers=h()
 #清空yaml文件
 clear_yaml()
 #配置日志记录器
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+
 @allure.title("用例编号：CJHCZ 用例名称：创建用户")#描述：针对用户管理模块-创建用户功能测试
 def test_case1():
     url=baseurl+"/portal/system/user/create"
     data={
-    "account":generate_phone_number(),
+    "account":generate_phone_number(),#一个方法
     "accountType": "MOBILE",
     "password":"ab123456+"
 }
-    res = requests.post(url=url, json=data, headers=headers)
+    res = requests.post(url=url, json=data, headers=headers02)
     print(res.text)
     ress=res.text
     result=json.loads(ress)
@@ -35,8 +37,9 @@ def test_case1():
         datas = {"userId": userid,
                  "username": account}
         write_yaml(datas)
+        print("\nc测试完成：",datas)
     except Exception :
-        logging.info("test_Ausermanagement.py:test_case1:FALL")
+        logging.error("test_Ausermanagement.py:test_case1:FALL")
 
 @allure.title("用例编号：CJHD0 用例名称：查询用户列表")#描述：针对用户管理模块-查询用户列表功能测试
 def test_case2():
@@ -164,11 +167,10 @@ def test_case9():
     url=baseurl+"/portal/system/order/createVvipInstance"
 
     data={
-        "account": 15013957569,
-        "productId": 1747870700813025282,
-        "productItemId": 1747870976919863297,
-        "productItemName": "不限时月卡"
-
+        "account": 15107612187,
+        "productId": 1921841985090879489,
+        "productItemId": 1921844563719618561,
+        "productItemName": "至尊版月卡"
     }
 
     res = requests.post(url=url, json=data, headers=headers)

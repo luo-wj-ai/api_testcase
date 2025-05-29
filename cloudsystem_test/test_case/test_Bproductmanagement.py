@@ -9,7 +9,7 @@ from cloudsystem_test.config.dataportal import write_yaml, read_yaml, clear_yaml
 import logging
 
 #云手机运营后台token
-headers=h
+headers=h()
 #清空yaml文件
 clear_yaml()
 #配置日志记录器
@@ -302,14 +302,17 @@ def test_case11():
 def test_case12():
     url=baseurl+"/portal/voucher/create"
     data={
-    "name":"自动化测试兑换码",
-    "productId":"1747875589274337282",
-    "productItemId":"1748151465362718722",
-    "startTime":"2024-12-01 00:00:00",
-    "endTime":"2025-12-01 00:00:00",
-    "maxUseCount":"1",
-    "generateType":"PRE_GENERATED",
-    "count":"1"
+    "name": "luo",
+    "startTime": "2025-05-27 11:45:51",
+    "endTime": "2025-05-30 00:00:00",
+    "productId": "1925012194404470786",
+    "productItemId": "1925012764209057793",
+    "durationType": "WEEK",
+    "duration": 1,
+    "count": 1,
+    "maxUseCount": 1,
+    "generateType": "PRE_GENERATED",
+    "isLimitUser": "false"
 }
     res = requests.post(url=url, json=data, headers=headers)
     print(res.text)

@@ -1,7 +1,7 @@
 ## 一、目录树
 
 ```
-📁 cloudsystem_test/
+📁 接口自动化目录树-cloudsystem_test/
     ├── 📁 common/  # 公共模块，存放项目中通用的配置和工具
     │   ├── 📄 Adata.py  # 存储反向订购请求参数数据
     │   ├── 📄 Aheaders.py  # 存储请求头信息，包括授权和内容类型
@@ -49,6 +49,7 @@
 ## 二、运行脚本
 
 ```
+运行接口测试，先cd进入cloudsystem_test目录
 python test_all.py
 ```
 

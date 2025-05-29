@@ -1,2 +1,0 @@
-{"contractRoot":{"head":{"transactionId":"79b1e158-ac06-4bfb-80f3-f0649caac158","reqTime":"20250120163911086","sign":""},"body":{"resultCode":"1","resultMsg":"开通成功","recoId":"P5ba3276d30ce4db9bd29b97212264d1b"}}}
-{'Server': 'nginx', 'Date': 'Mon, 20 Jan 2025 08:39:11 GMT', 'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding', 'X-Trace-Id': '29250e0f1fc945dbbf4bb036e550589a', 'Content-Encoding': 'gzip'}

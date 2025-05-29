@@ -1,2 +1,0 @@
-{"data":null,"header":{"errMsg":"库存不足","status":"00000116"}}
-{'Server': 'nginx', 'Date': 'Tue, 31 Dec 2024 00:58:29 GMT', 'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding', 'X-Trace-Id': '71847e33a7f244f58dc0c4f7a355cb58', 'Content-Encoding': 'gzip'}
