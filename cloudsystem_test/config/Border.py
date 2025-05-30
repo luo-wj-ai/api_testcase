@@ -20,7 +20,8 @@ baseurl="https://koophone-cc.cmtest.xyz"
 class test_CP:
     '''权益开通订购'''
     def test_ComputingPowerPackage(self, phone, channel, privateKey, skuCode, skuId, price):
-        url = "http://cmtest.xyz/procurement/benefit/get?" \
+        # url = "http://cmtest.xyz/procurement/benefit/get?" \
+        url = "http://sbo.cmtest.xyz/cloudphone-sign/benefit/get?" \
               f"phone={phone}&" \
               f"channel={channel}&" \
               f"privateKey={privateKey}&" \
