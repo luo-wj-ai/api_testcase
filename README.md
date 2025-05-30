@@ -60,4 +60,6 @@ python -m unittest AcloudUI.test_case.test_usermanagement
 {feat}:添加新功能
 {docs}：文档编写
 {style}：代码优化
+{refactor}:代码重构
+{chore}：需求变动，小更改
 ```
