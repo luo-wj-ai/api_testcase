@@ -4,6 +4,8 @@ from random import randint
 import allure
 import pytest
 import requests
+
+from cloudsystem_test.common.Assert import assert_response_time
 from cloudsystem_test.common.Aurl import baseurl
 from cloudsystem_test.common.Bthirdheader import app_id, request_id, signature, timestamp
 from cloudsystem_test.common.Bthirdheader02 import generate_api_auth_data
@@ -59,7 +61,6 @@ def test_case1():
     print(res.text)
     result=res.text
     result=json.loads(result)
-
     try:
         assert "物料图片上传至OSB失败" in result["msg"]#因为不是我们这边的问题，所以需要特殊处理一下
         logging.info("test_540Version.py:test_case1:SUCCESS")
@@ -118,6 +119,8 @@ def test_case3():
     result=res.text
     result=json.loads(result)
     # assert "成功" in result["header"]["errMsg"]
+    #断言响应时间加的新需求
+    assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
     try:
         assert "成功" in result["header"]["errMsg"]
         logging.info("test_540Version.py:test_case3:SUCCESS")
@@ -158,6 +161,8 @@ def test_case4():
     result=res.text
     result=json.loads(result)
     # assert "成功" in result["header"]["errMsg"]
+    #断言响应时间加的新需求
+    assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
     try:
         assert "成功" in result["header"]["errMsg"]
         logging.info("test_540Version.py:test_case4:SUCCESS")

@@ -2,6 +2,7 @@ import allure
 import pytest
 import requests
 from cloudsystem_test.common.Aheaders import h, Get_Authorization
+from cloudsystem_test.common.Assert import assert_response_time
 from cloudsystem_test.common.Aurl import baseurl
 import json
 from cloudsystem_test.config.Amobile import generate_phone_number
@@ -29,6 +30,8 @@ def test_case1():
     print(res.text)
     ress=res.text
     result=json.loads(ress)
+    #断言响应时间加的新需求
+    assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
     try:
         assert "成功" in result["header"]["errMsg"]
         logging.info("test_Ausermanagement.py:test_case1:SUCCESS")
@@ -51,6 +54,8 @@ def test_case2():
     print(res.text)
     ress=res.text
     result=json.loads(ress)
+    #断言响应时间加的新需求
+    assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
     try:
         assert "成功" in result["header"]["errMsg"]
         logging.info("test_Ausermanagement.py:test_case2:SUCCESS")
@@ -69,6 +74,8 @@ def test_case3():
     print(res.text)
     ress=res.text
     result=json.loads(ress)
+    #断言响应时间加的新需求
+    assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
     try:
         assert "成功" in result["header"]["errMsg"]
         logging.info("test_Ausermanagement.py:test_case3:SUCCESS")
@@ -87,6 +94,8 @@ def test_case4():
     print(res.text)
     ress=res.text
     result=json.loads(ress)
+    #断言响应时间加的新需求
+    assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
     try:
         assert "成功" in result["header"]["errMsg"]
         logging.info("test_Ausermanagement.py:test_case4:SUCCESS")
@@ -104,6 +113,8 @@ def test_case5():
     ress = res.text
     result = json.loads(ress)
     assert "成功" in result["header"]["errMsg"]
+    #断言响应时间加的新需求
+    assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
     try:
         assert "成功" in result["header"]["errMsg"]
         logging.info("test_Ausermanagement.py:test_case5:SUCCESS")
@@ -120,6 +131,8 @@ def test_case6():
     print(res.text)
     ress = res.text
     result = json.loads(ress)
+    #断言响应时间加的新需求
+    assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
     try:
         assert "成功" in result["header"]["errMsg"]
         logging.info("test_Ausermanagement.py:test_case6:SUCCESS")
@@ -136,6 +149,8 @@ def test_case7():
     print(res.text)
     ress=res.text
     result=json.loads(ress)
+    #断言响应时间加的新需求
+    assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
     try:
         assert "成功" in result["header"]["errMsg"]
         logging.info("test_Ausermanagement.py:test_case7:SUCCESS")
@@ -156,6 +171,8 @@ def test_case8():
     print(res.text)
     ress=res.text
     result=json.loads(ress)
+    #断言响应时间加的新需求
+    assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
     try:
         assert "成功" in result["header"]["errMsg"]
         logging.info("test_Ausermanagement.py:test_case8:SUCCESS")
@@ -204,6 +221,8 @@ def test_case10():
     print(res.text)
     ress=res.text
     result=json.loads(ress)
+    #断言响应时间加的新需求
+    assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
     try:
         assert "成功" in result["header"]["errMsg"]
         logging.info("test_Ausermanagement.py:test_case10:SUCCESS")
@@ -224,6 +243,8 @@ def test_case11():
     print(res.text)
     ress=res.text
     result=json.loads(ress)
+    #断言响应时间加的新需求
+    assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
     try:
         assert "成功" in result["header"]["errMsg"]
         logging.info("test_Ausermanagement.py:test_case11:SUCCESS")
@@ -242,6 +263,8 @@ def test_case12():
     print(res.text)
     ress=res.text
     result=json.loads(ress)
+    #断言响应时间加的新需求
+    assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
     try:
         assert "成功" in result["header"]["errMsg"]
         logging.info("test_Ausermanagement.py:test_case12:SUCCESS")
@@ -259,6 +282,8 @@ def test_case13():
     print(res.text)
     ress=res.text
     result=json.loads(ress)
+    #断言响应时间加的新需求
+    assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
     try:
         assert "成功" in result["header"]["errMsg"]
         logging.info("test_Ausermanagement.py:test_case13:SUCCESS")

@@ -1,0 +1,3 @@
+{"data":{"respSubs":{"userId":"1928372932336422913","account":"13418121720","accountType":"MOBILE","mobile":"13418121720","email":null,"status":"ACTIVE","level":"NORMAL","gender":null,"nickName":null,"channel":null,"profileAvatar":null,"profileSignature":null,"area":null,"tenantId":"8601","passwordExpireTime":null,"createTime":"2025-05-30 16:48:29","lastModifyTime":"2025-05-30 16:48:29","lastLoginTime":null,"externalInfos":null,"lockStatus":null,"identityVerificate":null,"passwordTempFlag":null}},"header":{"errMsg":"成功","status":"200"}}
+
+c测试完成： {'userId': '1928372932336422913', 'username': '13418121720'}

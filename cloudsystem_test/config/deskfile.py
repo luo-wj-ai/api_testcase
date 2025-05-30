@@ -15,6 +15,9 @@ def read_yaml(value):
         key=yaml.load(f,yaml.FullLoader)
         return key[value]
 
+
+
+
 def clear_yaml():
     with open(os.getcwd()+"/data.yaml",encoding="utf-8",mode='w') as f:
         f.truncate()
@@ -32,3 +35,4 @@ def generate_random_string(length=None):
     characters = string.ascii_letters + string.digits  # 包含数字、大小写英文和下划线
     random_string = ''.join(random.choice(characters) for _ in range(length))
     return random_string
+

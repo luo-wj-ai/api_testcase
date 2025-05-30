@@ -2,7 +2,7 @@ from time import sleep
 from AcloudUI.common.Avalue import usename, pw, code, logins, usermessage, usermessagelist, add, usertype, phonetype, \
     account, y, ordermessage, orderlists, orderaccount, ordersele, update, update2, choice, y2, repassword, newpassword, \
     newpassword2, y3, off, y4, on, y5, delete, y6, logger, loggeraccount, loggersele, cm1, cm2, cm3, cm4, \
-    cm5, cm6, cm7, cm8, userselectaccount, userselecta, cm9, cm10, cm11, cm12, cm13, cm14, cm15, cm16, cm17, cm18, cm19, cm20, cm21, cm22, cm23, cm24, cm25,cm26, cm27, cm28, cm29, cm30, cm31, cm32,cm33
+    cm5, cm6, cm7, cm8, userselectaccount, userselecta, cm9, cm11, cm10,cm12, cm13, cm14, cm15, cm16, cm17, cm18, cm19, cm20, cm21, cm22, cm23, cm24, cm25,cm26, cm27, cm28, cm29, cm30, cm31, cm32,cm33
 
 from selenium.webdriver.common.action_chains import ActionChains
 #登录页面
@@ -21,6 +21,7 @@ def abtn(driver):
 def cloudlogin(driver,name,password):
     adminname(driver, name)
     adminpassword(driver, password)
+    abtn(driver)
     return driver
 
 def cloudcode(driver,codes):
@@ -31,7 +32,7 @@ def cloudcode(driver,codes):
 #进入用户管理
 def userlist(driver):
     driver.find_element(*usermessage).click()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     return driver
 
 #创建用户
@@ -39,11 +40,11 @@ def usemessagelist(driver,useraccount):
     driver.find_element(*usermessagelist).click()
     sleep(2)
     driver.find_element(*add).click()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     driver.find_element(*usertype).click()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     driver.find_element(*phonetype).click()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     driver.find_element(*account).send_keys(useraccount)
     driver.find_element(*y).click()
     sleep(2)
@@ -61,9 +62,9 @@ def updatee(driver):
     driver.find_element(*update).click()
     sleep(2)
     driver.find_element(*update2).click()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     driver.find_element(*choice).click()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     driver.find_element(*y2).click()
     sleep(2)
     return driver
@@ -74,7 +75,7 @@ def repw(driver,rerpassword):
     sleep(2)
     driver.find_element(*newpassword).send_keys(rerpassword)
     driver.find_element(*newpassword2).send_keys(rerpassword)
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     driver.find_element(*y3).click()
     sleep(2)
     return driver
@@ -82,7 +83,7 @@ def repw(driver,rerpassword):
 #锁定用户
 def lock(driver):
     driver.find_element(*off).click()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     driver.find_element(*y4).click()
     sleep(2)
     return driver
@@ -90,7 +91,7 @@ def lock(driver):
 #解锁用户
 def unlock(driver):
     driver.find_element(*on).click()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     driver.find_element(*y5).click()
     sleep(2)
     return driver
@@ -98,7 +99,7 @@ def unlock(driver):
 #删除用户
 def deletes(driver):
     driver.find_element(*delete).click()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     driver.find_element(*y6).click()
     sleep(2)
     return driver
@@ -123,31 +124,33 @@ def cmsadd(driver,useraccount2):
     driver.find_element(*cm3).send_keys(useraccount2)
     driver.find_element(*cm4).click()
     sleep(2)
-    scroll_element = driver.find_element(*cm5)
-    for i in range(16):
-        actions = ActionChains(driver).click_and_hold(scroll_element)
-        actions.move_by_offset(0, 200).release().perform()
-        sleep(1)
+    #我尝试不再滑动
+            # scroll_element = driver.find_element(*cm5)
+            # for i in range(16):
+            #     actions = ActionChains(driver).click_and_hold(scroll_element)
+            #     actions.move_by_offset(0, 200).release().perform()
+            #     sleep(1)
     ActionChains(driver).move_to_element(driver.find_element(*cm6)).click().perform()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     driver.find_element(*cm7).click()
     sleep(2)
-    scroll_element2=driver.find_element(*cm8)
-    actions = ActionChains(driver).click_and_hold(scroll_element2)
-    actions.move_by_offset(0, 200).release().perform()
-    driver.implicitly_wait(30)
-    ActionChains(driver).move_to_element(driver.find_element(*cm9)).click().perform()
-    driver.implicitly_wait(30)
+        # scroll_element2=driver.find_element(*cm8)
+        # actions = ActionChains(driver).click_and_hold(scroll_element2)
+        # actions.move_by_offset(0, 200).release().perform()
+        # driver.implicitly_wait(10)
+        # ActionChains(driver).move_to_element(driver.find_element(*cm9)).click().perform()
+    driver.find_element(*cm9).click()
+    driver.implicitly_wait(10)
     driver.find_element(*cm10).click()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     driver.find_element(*cm11).click()
     sleep(2)
     return driver
 
 #查询云机列表
-def cmsselect(driver,cloudmobilename):
-    # driver.find_element(*cm12).send_keys(useraccount)
-    driver.find_element(*cm13).send_keys(cloudmobilename)
+def cmsselect(driver,useraccount):
+    driver.find_element(*cm12).send_keys(useraccount)
+    # driver.find_element(*cm13).send_keys(cloudmobilename)
     driver.find_element(*cm14).click()
     sleep(2)
     return driver
@@ -164,17 +167,17 @@ def cmsrenew(driver):
         actions.move_by_offset(0, 120).release().perform()
         sleep(1)
     ActionChains(driver).move_to_element(driver.find_element(*cm6)).click().perform()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     driver.find_element(*cm19).click()
     sleep(2)
     scroll_element2=driver.find_element(*cm20)
     actions = ActionChains(driver).click_and_hold(scroll_element2)
     actions.move_by_offset(0, 200).release().perform()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     ActionChains(driver).move_to_element(driver.find_element(*cm21)).click().perform()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     driver.find_element(*cm22).click()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     driver.find_element(*cm23).click()
     sleep(2)
     return driver
@@ -206,7 +209,7 @@ def cmselectdetails(driver):
 # 释放云机
 def cmreverse(driver):
     driver.find_element(*cm32).click()
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(10)
     driver.find_element(*cm33).click()
     sleep(2)
     return driver

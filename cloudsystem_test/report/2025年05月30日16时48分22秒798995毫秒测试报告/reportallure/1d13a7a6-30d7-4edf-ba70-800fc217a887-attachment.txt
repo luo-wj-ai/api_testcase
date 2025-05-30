@@ -1,0 +1,4 @@
+{"data":{"result":true},"header":{"errMsg":"成功","status":"200"}}
+{'Date': 'Fri, 30 May 2025 08:48:48 GMT', 'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding', 'X-Trace-Id': 'b247489c90d24268942d469e1498b21e', 'Content-Encoding': 'gzip', 'Server': 'elb'}
+{"data":null,"header":{"errMsg":"当前云机跟续费商品指定的云机不一致","status":"501006"}}
+{'Date': 'Fri, 30 May 2025 08:48:48 GMT', 'Content-Type': 'application/json;charset=UTF-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding', 'X-Trace-Id': '0272edd2a6e141f999f2497b8787bc87', 'Content-Encoding': 'gzip', 'Server': 'elb'}

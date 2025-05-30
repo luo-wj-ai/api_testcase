@@ -1,2 +1,41 @@
-memberPackageId: '32'
-smscode2: CTAy9A/FsmgUbIb//eJCy6FFHWtyrFOD/IuGSggRr77ujZ1vPfmrnnjhbXcAuVXO47UM8x/RXPstu1HYxx6gDFA+Oyx0nS6/TC3Te5lwI4Nj2M3s2I9eGTlNnGLALH/ms+7vtZAYmZKz5ghp80jxaWEbKhXkom76wJruZdS8qT+LgV8VTaXVeF76Ws/1PnfjC1DfyMbZz7b8GOXd22SI6Ulusk4WygGlCGeLZGA43tZOe0mGMYu51YO/LVl5xKIGGUW86j8p1Y4HsPcHKJmoKdffodY97sAFR3gD35e5YaL3htPcwcGhK+rDKVQeiolxjoZJ2bCYVPEl7Y00oEegew==
+customerId: bM22t/s8vp6q0OGN+k9dfQ==
+P:
+  reqParam:
+    billDate: '20231023'
+    channelId: '137'
+    coProductAttrs:
+    - busiType: '40'
+      code: '2023999580000314'
+      goodsId: xianshibaoyue
+      issueType: '2'
+      name: 中国移动云手机旗舰款专业版全国
+      orgCode: '9995'
+      settlementPrice: 0
+      shareRatio: 100
+      type: '5'
+    jfOrderId: j_11
+    notifyType: '1'
+    notifyiResult: '0'
+    oprTime: '20241093170531'
+    oprType: '01'
+    orderItemList:
+    - customerId: bM22t/s8vp6q0OGN+k9dfQ==
+      customerType: '1'
+      effectTime: '20231023170535'
+      expireTime: '20240930154900'
+      goodsId: S001
+      goodsName: 中国移动云手机专业版（天卡）
+      jfSubOrderId: R10000000780068
+      quantity: '1'
+    orderTime: '20240326105003'
+    outOrderId: ccjXR
+    pubInfo:
+      msgVer: '1.0'
+      reqTime: '20231223170535'
+      systemCode: PDC
+    useBill: ''
+    usePoint: ''
+  sign: MCwCFBeysNJt6MRqgJjw2pGPlO/1tmt9lxAhQSQHbNtlir6D1HjmbXNfzszW1zYw==
+stoken: YZsidssolgf82e65810909aabfce9a05144c7c8f44
+timestamp: '1748594930'
+sign: I7d3w0Cwk+yamU3jTrQWXwOVv3cU12vhrlp7n6n8Rt4=

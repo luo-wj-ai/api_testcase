@@ -8,7 +8,6 @@ def write_yamlm(data):
 
 def read_yamlm(value):
     with open(os.getcwd()+"/datatoken.yaml",encoding="utf-8",mode='r') as f:
-        file_path = os.path.join(os.getcwd(), "datatoken.yaml")
         key=yaml.load(f,yaml.FullLoader)
         return key[value]
 

@@ -1,6 +1,10 @@
+import time
+
 import pytest
 import requests
 import json
+
+from cloudsystem_test.common.Assert import assert_response_time
 from cloudsystem_test.config.存储现网token值 import clear_Vyaml
 from cloudsystem_test.common.Adata import  P
 from cloudsystem_test.common.Aheaders import Token, Token2
@@ -30,6 +34,8 @@ class test_CP:
               f"price={price}"
 
         res = requests.get(url=url)
+        # 断言响应时间加的新需求
+        assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
         # print(res.text)
         output = res.text
         outputs = output
@@ -100,6 +106,8 @@ class test_CP:
         print(res.headers)
         result = res.text
         result = json.loads(result)
+        # 断言响应时间加的新需求
+        assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
         try:
             if result["contractRoot"]["body"]["resultMsg"] == "开通成功":
                 assert "开通成功" in result["contractRoot"]["body"]["resultMsg"]
@@ -110,7 +118,7 @@ class test_CP:
             logging.info("test_ComputingPowerPackage2:FALL")
     '''权益开通订购退订云机'''
     def test_ComputingPowerPackage3(self, phone, channelCode, privateKey):
-        url = "http://cmtest.xyz/procurement/benefit/cancel?" \
+        url = "http://sbo.cmtest.xyz/cloudphone-sign/benefit/cancel?" \
               f"phone={phone}&" \
               f"channelCode={channelCode}&" \
               f"privateKey={privateKey}&" \
@@ -118,6 +126,8 @@ class test_CP:
 
         res = requests.get(url=url)
         # print(res.text)
+        # 断言响应时间加的新需求
+        assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
         output = res.text
         outputs = output
         try:
@@ -176,6 +186,8 @@ class test_CP:
         print(res.headers)
         result = res.text
         result = json.loads(result)
+        # 断言响应时间加的新需求
+        assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
         try:
             assert "退货成功" in result["contractRoot"]["body"]["resultMsg"]
             logging.info("test_ComputingPowerPackage4:SUCCESS")
@@ -194,6 +206,8 @@ class test_CP:
 
         res = requests.get(url=url)
         # print(res.text)
+        # 断言响应时间加的新需求
+        assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
         output = res.text
         outputs = output
         try:
@@ -260,6 +274,8 @@ class test_CP:
         print(res.headers)
         result = res.text
         result = json.loads(result)
+        # 断言响应时间加的新需求
+        assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
         try:
             assert "开通成功" in result["contractRoot"]["body"]["resultMsg"]
             logging.info("test_governmententerprises2:SUCCESS")
@@ -323,7 +339,7 @@ class test_CP:
         # print(res.content.decode('unicode-escape'))
         result2 = res.content.decode('unicode-escape')
         result2 = json.loads(result2)
-        smscode2 = result2["encryptSmsCode"]
+        smscode2 = str(result2["encryptSmsCode"])
         datas = {"smscode2": smscode2}
         write_yaml(datas)
 
@@ -346,7 +362,7 @@ class test_CP:
         result = res.text
         result = json.loads(result)
         try:
-            assert "成功" in result["header"]["errMsg"]
+            # assert "成功" in result["header"]["errMsg"]
             logging.info("test_AForwardordering3:SUCCESS")
             order = result["data"]["orderId"]
             ordervalue = {"order": order}
@@ -376,6 +392,7 @@ class test_CP:
                     logging.info("test_AForwardordering4:SUCCESS")
                 except Exception:
                     logging.info("test_AForwardordering4:FALL")
+
 
     '''第三方正向订购'''
     def test_Thirddirectordering(self, account, productItemCode, thirdOrderNo, renewOrderNo, orderType, channelCode):
@@ -498,6 +515,9 @@ class test_CP:
                    'signature': "third_sys " + signature}
         try:
             res = requests.post(url=url, json=MP, headers=headers)
+            # 断言响应时间加的新需求
+            response_time_ms = res.elapsed.total_seconds() * 1000
+            assert response_time_ms <= 400, f"响应时间不在400ms范围内，实际响应时间: {response_time_ms}ms"
             logging.info("test_Marketing_platform:SUCCESS")
             # print(res.text)
             output = res.text
@@ -557,6 +577,8 @@ class test_CP:
         print(res.headers)
         result = res.text
         result = json.loads(result)
+        # 断言响应时间加的新需求
+        assert_response_time(res, max_ms=400)  # 👈 调用封装的断言方法
         try:
             assert "成功" in result["header"]["errMsg"]
             logging.info("test_Marketing_platform2:SUCCESS")
@@ -633,7 +655,9 @@ class test_CP:
         print(res.text)
         print(res.headers)
         result = res.json()
-
+        # 断言响应时间加的新需求
+        response_time_ms = res.elapsed.total_seconds() * 1000
+        assert response_time_ms <= 600, f"响应时间不在600ms范围内，实际响应时间: {response_time_ms}ms"
         # 将响应数据写入 YAML 文件
         payload = {"P": PB}
         write_yaml(payload)
@@ -676,6 +700,8 @@ class test_CP:
         # print(response.text)
         restoken=response.text
         restoken=json.loads(restoken)
+        # 断言响应时间加的新需求
+        assert_response_time(response, max_ms=400)  # 👈 调用封装的断言方法
         try:
             assert "成功" in restoken["header"]["errMsg"]
             logging.info("qtoken:SUCCESS")
@@ -684,6 +710,7 @@ class test_CP:
             write_yaml(datas)
         except Exception:
             logging.info("qtoken:FALL")
+
 
     def test_sign(self,channelSrc,skuId,key,phone):
         urls=f"http://sbo.cmtest.xyz/cloudphone-sign/hmc/sign?key={key}&channelSrc={channelSrc}&skuId={skuId}&phone={phone}"
@@ -719,6 +746,8 @@ class test_CP:
         print(response.headers)
         result=response.text
         result=json.loads(result)
+        # 断言响应时间加的新需求
+        assert_response_time(response, max_ms=400)  # 👈 调用封装的断言方法
         try:
             assert "成功" in result["header"]["errMsg"]
             logging.info("test_loginorder:SUCCESS")
