@@ -1,3 +1,4 @@
+import os
 from time import sleep
 import pyautogui
 from selenium.webdriver import ActionChains
@@ -146,7 +147,8 @@ def redeemcodeadd(driver,addtitle,codenumber,limitusernumber):
     driver.find_element(*redeemcode4).click()
     sleep(2)
     scroll_element=driver.find_element(*redeemcode5)
-    for i in range(30):
+    # 当前设置为 range(0)，循环不会执行
+    for i in range(0):
         action=ActionChains(driver).click_and_hold(scroll_element)
         action.move_by_offset(0,180).release().perform()
         sleep(1)
@@ -154,9 +156,10 @@ def redeemcodeadd(driver,addtitle,codenumber,limitusernumber):
     driver.implicitly_wait(30)
     driver.find_element(*redeemcode7).click()
     sleep(2)
-    scroll_element2=driver.find_element(*redeemcode8)
-    action=ActionChains(driver).click_and_hold(scroll_element2)
-    action.move_by_offset(0,200).release().perform()
+    # 当前设置为 range(0)，循环不会执行
+    # scroll_element2=driver.find_element(*redeemcode8)
+    # action=ActionChains(driver).click_and_hold(scroll_element2)
+    # action.move_by_offset(0,200).release().perform()
     driver.implicitly_wait(30)
     ActionChains(driver).move_to_element(driver.find_element(*redeemcode9)).click().perform()
     driver.implicitly_wait(30)
@@ -209,11 +212,20 @@ def privilegeadd(driver,addtitle,addcontent,files):
     driver.find_element(*privilege4).send_keys(addtitle)
     driver.find_element(*privilege5).send_keys(addcontent)
     driver.implicitly_wait(30)
-    driver.find_element(*privilege6).click()
-    sleep(2)
-    pyautogui.write(files)
-    sleep(3)
-    pyautogui.press("enter",2)
+    #上传文件 旧
+        # driver.find_element(*privilege6).click()
+        # sleep(2)
+        # pyautogui.write(files)
+        # sleep(3)
+        # pyautogui.press("enter",2)
+    # 上传文件 新
+    screenshot_path = './temp_screenshot.png'
+    driver.save_screenshot(screenshot_path)
+    driver.find_element(*privilege6).send_keys(os.path.abspath(screenshot_path))
+    # 3. 删除截图
+    sleep(1)  # 等待上传完成，视情况加不加
+    if os.path.exists(screenshot_path):
+        os.remove(screenshot_path)
     sleep(2)
     driver.find_element(*privilege7).click()
     sleep(2)
@@ -254,7 +266,8 @@ def membermenuadd(driver,addtitle):
     driver.find_element(*membermenu4).click()
     sleep(2)
     scroll_element=driver.find_element(*membermenu5)
-    for i in range(18):
+    # 当前设置为 range(0)，循环不会执行
+    for i in range(0):
         action=ActionChains(driver).click_and_hold(scroll_element)
         action.move_by_offset(0,200).release().perform()
         sleep(1)
@@ -262,9 +275,10 @@ def membermenuadd(driver,addtitle):
     driver.implicitly_wait(30)
     driver.find_element(*membermenu7).click()
     sleep(2)
-    scroll_element2=driver.find_element(*membermenu8)
-    action=ActionChains(driver).click_and_hold(scroll_element2)
-    action.move_by_offset(0,200).release().perform()
+    # 当前设置为 range(0)，循环不会执行
+    # scroll_element2=driver.find_element(*membermenu8)
+    # action=ActionChains(driver).click_and_hold(scroll_element2)
+    # action.move_by_offset(0,200).release().perform()
     driver.implicitly_wait(30)
     ActionChains(driver).move_to_element(driver.find_element(*membermenu9)).click().perform()
     driver.implicitly_wait(30)

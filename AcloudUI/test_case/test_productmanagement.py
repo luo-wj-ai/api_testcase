@@ -1,3 +1,4 @@
+import time
 from random import randint
 from time import sleep
 import ddddocr
@@ -35,7 +36,7 @@ addsort=9999
 updatetitle='编辑自动化测试'
 #查询产品
 selectproduct='自动化测试勿动'
-#上传图片
+#上传图片，这里是相对路径，需要改成绝对路径，我已在里面的代码片段更改，这个就不管了
 files=r"C:\Users\acer\Desktop\picturetest\man.jpg"
 
 class test_B(unittest.TestCase):
@@ -44,20 +45,23 @@ class test_B(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.driver = webdriver.Chrome()
         cls.driver.maximize_window()
-        cls.driver.get('http://cc-hwy.cmtest.xyz/cloud-phone-admin/#/userInfo/cloudphone')
-        cloudlogin(cls.driver, "15013957559", "ab123456+")
-        img = cls.driver.find_element(By.XPATH, '//*[@id="app"]/div/div/form/div[3]/div/div[2]/img')
-        img.screenshot("2.png")
-        ocr = ddddocr.DdddOcr(old=True)
-        with open("2.png", 'rb') as f:
-            image = f.read()
-        res = ocr.classification(image)
-        cloudcode(cls.driver, res)
+        cls.driver.get('https://koophone-cc.cmtest.xyz:8080/cloud-phone-admin/#/login')
+        # cloudlogin(cls.driver, "15013957559", "ab123456+")
+        cloudlogin(cls.driver, "luoweijie", "Luoweijie:123")
+        # img = cls.driver.find_element(By.XPATH, '//*[@id="app"]/div/div/form/div[3]/div/div[2]/img')
+        # img.screenshot("2.png")
+        # ocr = ddddocr.DdddOcr(old=True)
+        # with open("2.png", 'rb') as f:
+        #     image = f.read()
+        # res = ocr.classification(image)
+        # cloudcode(cls.driver, res)
         cls.driver.implicitly_wait(10)
 
     @classmethod
     def tearDownClass(cls) -> None:
+        time.sleep(10)
         cls.driver.quit()
+
     def test_B01(self):
         """新增产品"""
         productmessage(self.driver)

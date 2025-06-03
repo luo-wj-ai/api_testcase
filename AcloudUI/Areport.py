@@ -21,3 +21,5 @@ newfilepath = '../AcloudUI/report/'+filenamechange('.html')
 with open(newfilepath,'wb') as f:
     runner=HTMLTestRunner(stream=f,verbosity=1,title="云手机能力中心平台自动化测试")
     runner.run(suite)
+
+

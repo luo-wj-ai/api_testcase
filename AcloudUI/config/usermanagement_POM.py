@@ -1,8 +1,12 @@
 from time import sleep
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
 from AcloudUI.common.Avalue import usename, pw, code, logins, usermessage, usermessagelist, add, usertype, phonetype, \
     account, y, ordermessage, orderlists, orderaccount, ordersele, update, update2, choice, y2, repassword, newpassword, \
     newpassword2, y3, off, y4, on, y5, delete, y6, logger, loggeraccount, loggersele, cm1, cm2, cm3, cm4, \
-    cm5, cm6, cm7, cm8, userselectaccount, userselecta, cm9, cm11, cm10,cm12, cm13, cm14, cm15, cm16, cm17, cm18, cm19, cm20, cm21, cm22, cm23, cm24, cm25,cm26, cm27, cm28, cm29, cm30, cm31, cm32,cm33
+    cm5, cm6, cm7, userselectaccount, userselecta, cm9, cm11, cm10, cm12, cm13, cm14, cm15, cm16, cm18, cm19, cm21, \
+    cm22, cm23, cm24, cm25, cm26, cm27, cm28, cm29, cm30, cm31, cm32, cm33, cm20, cm17
 
 from selenium.webdriver.common.action_chains import ActionChains
 #登录页面
@@ -124,21 +128,20 @@ def cmsadd(driver,useraccount2):
     driver.find_element(*cm3).send_keys(useraccount2)
     driver.find_element(*cm4).click()
     sleep(2)
-    #我尝试不再滑动
-            # scroll_element = driver.find_element(*cm5)
-            # for i in range(16):
-            #     actions = ActionChains(driver).click_and_hold(scroll_element)
-            #     actions.move_by_offset(0, 200).release().perform()
-            #     sleep(1)
+    scroll_element = driver.find_element(*cm5)
+    for i in range(1):
+        actions = ActionChains(driver).click_and_hold(scroll_element)
+        actions.move_by_offset(0, 200).release().perform()
+        sleep(1)
     ActionChains(driver).move_to_element(driver.find_element(*cm6)).click().perform()
     driver.implicitly_wait(10)
     driver.find_element(*cm7).click()
     sleep(2)
-        # scroll_element2=driver.find_element(*cm8)
-        # actions = ActionChains(driver).click_and_hold(scroll_element2)
-        # actions.move_by_offset(0, 200).release().perform()
-        # driver.implicitly_wait(10)
-        # ActionChains(driver).move_to_element(driver.find_element(*cm9)).click().perform()
+    # scroll_element2=driver.find_element(*cm8)
+    # actions = ActionChains(driver).click_and_hold(scroll_element2)
+    # actions.move_by_offset(0, 200).release().perform()
+    # driver.implicitly_wait(10)
+    # ActionChains(driver).move_to_element(driver.find_element(*cm9)).click().perform()
     driver.find_element(*cm9).click()
     driver.implicitly_wait(10)
     driver.find_element(*cm10).click()
@@ -149,7 +152,7 @@ def cmsadd(driver,useraccount2):
 
 #查询云机列表
 def cmsselect(driver,useraccount):
-    driver.find_element(*cm12).send_keys(useraccount)
+    # driver.find_element(*cm12).send_keys(useraccount)#已经有账号了，所以不需要再输入
     # driver.find_element(*cm13).send_keys(cloudmobilename)
     driver.find_element(*cm14).click()
     sleep(2)
@@ -162,7 +165,7 @@ def cmsrenew(driver):
     driver.find_element(*cm16).click()
     sleep(2)
     scroll_element = driver.find_element(*cm17)
-    for i in range(16):
+    for i in range(1):
         actions = ActionChains(driver).click_and_hold(scroll_element)
         actions.move_by_offset(0, 120).release().perform()
         sleep(1)
@@ -170,14 +173,19 @@ def cmsrenew(driver):
     driver.implicitly_wait(10)
     driver.find_element(*cm19).click()
     sleep(2)
-    scroll_element2=driver.find_element(*cm20)
-    actions = ActionChains(driver).click_and_hold(scroll_element2)
-    actions.move_by_offset(0, 200).release().perform()
+    # scroll_element2=driver.find_element(*cm20)
+    # actions = ActionChains(driver).click_and_hold(scroll_element2)
+    # actions.move_by_offset(0, 200).release().perform()
     driver.implicitly_wait(10)
-    ActionChains(driver).move_to_element(driver.find_element(*cm21)).click().perform()
+    # ActionChains(driver).move_to_element(driver.find_element(*cm21)).click().perform()
+    wait = WebDriverWait(driver, 10)
+    element = wait.until(EC.element_to_be_clickable(cm21))  # 等待元素可点击
+    element.click()
     driver.implicitly_wait(10)
+    sleep(5)
     driver.find_element(*cm22).click()
     driver.implicitly_wait(10)
+    sleep(5)
     driver.find_element(*cm23).click()
     sleep(2)
     return driver
