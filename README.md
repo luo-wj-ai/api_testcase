@@ -49,10 +49,15 @@
 ## 二、运行脚本
 
 ```
-运行接口测试，先cd进入cloudsystem_test目录
+①运行接口测试，先cd进入cloudsystem_test目录
 python test_all.py
-运行UI测试，直接在api的目录即可
+②运行UI测试，直接在api的目录即可
 python -m unittest AcloudUI.test_case.test_usermanagement
+③调试模式-直接调用当前浏览器
+cmd执行：chrome.exe --remote-debugging-port=9527 --user-data-dir="C:\Program Files\Google\Chrome\Application"
+options = Options()
+options.add_experimental_option("debuggerAddress", "127.0.0.1:9527")
+cls.driver = webdriver.Chrome(options=options)
 ```
 ## 其他
 ```
