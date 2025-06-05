@@ -4,6 +4,7 @@ from time import sleep
 import ddddocr
 import unittest
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from AcloudUI.config.productmanagement_POM import productadd, productselect, productupdate, productdelete, privilegeadd, \
     privilegeselect, privilegeupdate, privilegedelete, productmessage, productitemadd, productitemupdate, \
@@ -56,6 +57,8 @@ class test_B(unittest.TestCase):
         # res = ocr.classification(image)
         # cloudcode(cls.driver, res)
         cls.driver.implicitly_wait(10)
+
+
 
     @classmethod
     def tearDownClass(cls) -> None:

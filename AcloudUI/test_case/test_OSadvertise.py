@@ -2,6 +2,7 @@ from time import sleep
 import ddddocr
 import unittest
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
 from AcloudUI.config.OSadvertise_POM import osadvertise, osadvertiseadd, osadvertiseselect, osadvertiseupdate, \
@@ -22,12 +23,12 @@ addtitle='自动化测试'
 updatetitle='编辑自动化测试'
 #查询产品
 selectproduct='自动化测试勿动'
-#上传图片
+#上传图片,已在代码里面修改了相对路径
 files=r"C:\Users\acer\Desktop\picturetest\man.jpg"
-#上传主题包
+#上传主题包,已在代码里面修改了相对路径
 filesgnz=r"C:\Users\acer\Desktop\picturetest\test.gnz"
-#上传应用
-fileapp=r"C:\Users\acer\Desktop\picturetest\com.xunmeng.pinduoduo.apk"
+#上传应用,需要针对这个绝对路径，实时更改apk
+fileapp=r"C:\Users\luo\Downloads\test.apk"
 #链接地址
 osurl='https://www.baidu.com/'
 #消息内容
@@ -41,20 +42,30 @@ class test_D(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.driver = webdriver.Chrome()
         cls.driver.maximize_window()
-        cls.driver.get('http://cc-hwy.cmtest.xyz/cloud-phone-admin/#/userInfo/cloudphone')
-        cloudlogin(cls.driver, "15013957559", "ab123456+")
-        img = cls.driver.find_element(By.XPATH, '//*[@id="app"]/div/div/form/div[3]/div/div[2]/img')
-        img.screenshot("2.png")
-        ocr = ddddocr.DdddOcr(old=True)
-        with open("2.png", 'rb') as f:
-            image = f.read()
-        res = ocr.classification(image)
-        cloudcode(cls.driver, res)
+        cls.driver.get('https://koophone-cc.cmtest.xyz:8080/cloud-phone-admin/#/login')
+        cloudlogin(cls.driver, "luoweijie", "Luoweijie:123")
+        # img = cls.driver.find_element(By.XPATH, '//*[@id="app"]/div/div/form/div[3]/div/div[2]/img')
+        # img.screenshot("2.png")
+        # ocr = ddddocr.DdddOcr(old=True)
+        # with open("2.png", 'rb') as f:
+        #     image = f.read()
+        # res = ocr.classification(image)
+        # cloudcode(cls.driver, res)
         cls.driver.implicitly_wait(10)
+
+    # #调试模式
+    # @classmethod
+    # def setUpClass(cls) -> None:
+    #     options = Options()
+    #     options.add_experimental_option("debuggerAddress", "127.0.0.1:9527")
+    #     cls.driver = webdriver.Chrome(options=options)
+
 
     @classmethod
     def tearDownClass(cls) -> None:
+        sleep(2)
         cls.driver.quit()
+
     def test_D01(self):
         """新增OS广告"""
         osadvertise(self.driver)

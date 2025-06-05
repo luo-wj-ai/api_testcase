@@ -9,37 +9,47 @@ from AcloudUI.common.Avalue import OSadverse1, OSadverse2, OSadverse3, OSadverse
     wallpaper11, wallpaper12, wallpaper13, wallpaper14, wallpaper15, widget1, widget2, widget3, widget4, widget5, \
     widget6, widget7, widget8, widget9, widget10, widget11, widget12, widget13, widget14, widget15, widget16, widget17, \
     application1, application2, application3, application4, application5, application6, application7, application8, \
-    application9, application10, application11, message1, message2, message3, message4, message5, message6, message7, message8,message9, message10, message11, message12, message13
+    application9, application10, application11, message1, message2, message3, message4, message5, message6, message7, \
+    message8, message9, message10, message11, message12, message13, OSadverse11_2
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+from AcloudUI.means.Upload_files import handle_screenshot, create_gnz_file, download_apk
 
 
 #进入OS运营管理
 def osadvertise(driver):
-    driver.find_element(*OSadverse1).click()
-    sleep(2)
+    # driver.find_element(*OSadverse1).click()
+    # sleep(2)
     return driver
 
 #新增OS广告
 def osadvertiseadd(driver,addtitle,osurl):
-    driver.find_element(*OSadverse2).click()
-    sleep(2)
-    driver.find_element(*OSadverse3).click()
-    sleep(2)
-    driver.find_element(*OSadverse4).click()
-    sleep(2)
+    # driver.find_element(*OSadverse2).click()
+    # sleep(2)
+    # driver.find_element(*OSadverse3).click()
+    # sleep(2)
+    # driver.find_element(*OSadverse4).click()
+    # sleep(2)
+
     driver.find_element(*OSadverse5).click()
     sleep(1)
     driver.find_element(*OSadverse6).click()
     driver.implicitly_wait(30)
     driver.find_element(*OSadverse7).click()
-    sleep(1)
+    sleep(3)
+    driver.implicitly_wait(30)
     driver.find_element(*OSadverse8).click()
     driver.implicitly_wait(30)
     driver.find_element(*OSadverse9).send_keys(addtitle)
     driver.find_element(*OSadverse10).click()
     driver.implicitly_wait(30)
     driver.find_element(*OSadverse11).send_keys(osurl)
+    driver.implicitly_wait(30)
+    files=handle_screenshot(driver)
+    driver.find_element(*OSadverse11_2).send_keys(files)
+    sleep(2)
+    driver.implicitly_wait(30)
     driver.find_element(*OSadverse12).click()
     driver.implicitly_wait(30)
     driver.find_element(*OSadverse13).click()
@@ -84,17 +94,23 @@ def themeadd(driver,addtitle,files,filesgnz):
     sleep(2)
     driver.find_element(*theme3).send_keys(addtitle)
     driver.implicitly_wait(30)
-    driver.find_element(*theme4).click()
+        #旧版本上传图片和上传gnz文件
+        # driver.find_element(*theme4).click()
+        # sleep(2)
+        # pyautogui.write(files)
+        # sleep(2)
+        # pyautogui.press('enter',2)
+        # sleep(2)
+        # driver.find_element(*theme5).click()
+        # sleep(2)
+        # pyautogui.write(filesgnz)
+        # sleep(3)
+        # pyautogui.press('enter',2)
+    # 新版本上传图片和上传gnz文件
+    driver.find_element(*theme4).send_keys(handle_screenshot(driver))
     sleep(2)
-    pyautogui.write(files)
-    sleep(2)
-    pyautogui.press('enter',2)
-    sleep(2)
-    driver.find_element(*theme5).click()
-    sleep(2)
-    pyautogui.write(filesgnz)
+    driver.find_element(*theme5).send_keys(create_gnz_file())
     sleep(3)
-    pyautogui.press('enter',2)
     WebDriverWait(driver, 30).until(
         EC.presence_of_element_located((By.XPATH, '//span[text()="复制链接"]'))
     )
@@ -137,15 +153,20 @@ def themedelete(driver):
 def wallpaperadd(driver,addtitle,files):
     driver.find_element(*wallpaper1).click()
     sleep(2)
+    driver.implicitly_wait(30)
     driver.find_element(*wallpaper2).click()
     sleep(2)
+    driver.implicitly_wait(30)
     driver.find_element(*wallpaper3).send_keys(addtitle)
     driver.implicitly_wait(30)
-    driver.find_element(*wallpaper4).click()
-    sleep(2)
-    pyautogui.write(files)
-    sleep(2)
-    pyautogui.press('enter',2)
+    #旧版本上传图片
+        # driver.find_element(*wallpaper4).click()
+        # sleep(2)
+        # pyautogui.write(files)
+        # sleep(2)
+        # pyautogui.press('enter',2)
+    #新版本上传图片
+    driver.find_element(*wallpaper4).send_keys(handle_screenshot(driver))
     sleep(2)
     driver.find_element(*wallpaper5).click()
     driver.implicitly_wait(30)
@@ -194,11 +215,14 @@ def widgetadd(driver,addtitle,files):
     sleep(1)
     driver.find_element(*widget5).click()
     driver.implicitly_wait(30)
-    driver.find_element(*widget6).click()
-    sleep(2)
-    pyautogui.write(files)
-    sleep(2)
-    pyautogui.press('enter',2)
+    #旧版本上传图片
+        # driver.find_element(*widget6).click()
+        # sleep(2)
+        # pyautogui.write(files)
+        # sleep(2)
+        # pyautogui.press('enter',2)
+    #新版本上传图片
+    driver.find_element(*widget6).send_keys(handle_screenshot(driver))
     sleep(2)
     driver.find_element(*widget7).click()
     driver.implicitly_wait(30)
@@ -241,19 +265,28 @@ def applicationadd(driver,fileapp,addtitle,files):
     sleep(2)
     driver.find_element(*application2).click()
     sleep(2)
-    driver.find_element(*application3).click()
-    sleep(2)
-    pyautogui.write(fileapp)
-    sleep(2)
-    pyautogui.press('enter',2)
+    # 新版本上传图片
+    driver.find_element(*application5).send_keys(handle_screenshot(driver))
+            #旧版本上传文件
+                # driver.find_element(*application3).click()
+                # sleep(2)
+                # pyautogui.write(fileapp)
+                # sleep(2)
+                # pyautogui.press('enter',2)
+            #新版本上传文件
+                # driver.find_element(*application3).send_keys(download_apk())
+    driver.find_element(*application3).send_keys(fileapp)
+    driver.implicitly_wait(30)
     sleep(2)
     driver.find_element(*application4).send_keys(addtitle)
+    sleep(2)
     driver.implicitly_wait(30)
-    driver.find_element(*application5).click()
-    sleep(2)
-    pyautogui.write(files)
-    sleep(2)
-    pyautogui.press('enter',2)
+        #旧版本上传图片
+            # driver.find_element(*application5).click()
+            # sleep(2)
+            # pyautogui.write(files)
+            # sleep(2)
+            # pyautogui.press('enter',2)
     sleep(2)
     driver.find_element(*application6).click()
     WebDriverWait(driver, 120).until(

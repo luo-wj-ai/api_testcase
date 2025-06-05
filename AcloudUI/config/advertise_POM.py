@@ -1,5 +1,5 @@
 from time import sleep
-
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -13,6 +13,9 @@ from AcloudUI.common.Avalue import adverse1, adverse2, adverse3, adverse4, adver
     config5, config6, config7, config8, config9, config10, config11, config12, config13, config14, config15, config16, \
     config17, config18, config19, config20, config21
 import pyautogui
+
+from AcloudUI.means.Upload_files import handle_screenshot
+
 
 #进入运营管理
 def adversee(driver):
@@ -36,13 +39,19 @@ def adverseadd(driver,addtitle,files):
     driver.implicitly_wait(30)
     driver.find_element(*adverse8).click()
     sleep(2)
-    driver.find_element(*adverse9).click()
-    sleep(2)
-    pyautogui.write(files)
-    sleep(2)
-    pyautogui.press('enter',2)
+        #旧版截图
+        # driver.find_element(*adverse9).click()
+        # sleep(2)
+        # pyautogui.write(files)
+        # sleep(2)
+        # pyautogui.press('enter',2)
+        #sleep(2)
+    #新版截图
+    files=handle_screenshot(driver)
+    driver.find_element(*adverse9).send_keys(files)
     sleep(2)
     driver.find_element(*adverse10).click()
+    sleep(2)
     driver.implicitly_wait(30)
     driver.find_element(*adverse11).click()
     driver.implicitly_wait(30)
@@ -91,6 +100,7 @@ def configadd(driver,addtitle,showversion,internalversion,download,filesize,cont
     sleep(2)
     driver.find_element(*config9).click()
     sleep(2)
+    driver.implicitly_wait(30)
     driver.find_element(*config10).click()
     driver.implicitly_wait(30)
     driver.find_element(*config11).click()
@@ -112,6 +122,7 @@ def configselect(driver, addtitle):
 def configupdate(driver,addtitle):
     driver.find_element(*config17).click()
     sleep(2)
+    driver.find_element(*config18).clear()
     driver.find_element(*config18).send_keys(addtitle)
     driver.implicitly_wait(30)
     driver.find_element(*config19).click()
@@ -140,11 +151,16 @@ def guidanceadd(driver,addtitle,files,selectproduct):
     sleep(2)
     driver.find_element(*guide3).send_keys(addtitle)
     driver.implicitly_wait(30)
-    driver.find_element(*guide4).click()
+    #旧版本截图
+    # driver.find_element(*guide4).click()
+    # sleep(2)
+    # pyautogui.write(files)
+    # sleep(2)
+    # pyautogui.press('enter',2)
+    #新版本截图
+    files=handle_screenshot(driver)
+    driver.find_element(*guide4).send_keys(files)
     sleep(2)
-    pyautogui.write(files)
-    sleep(2)
-    pyautogui.press('enter',2)
     WebDriverWait(driver,30).until(EC.presence_of_element_located((By.XPATH,'//p[text()="上传成功！"]')))
     driver.find_element(*guide5).send_keys(selectproduct)
     sleep(2)
@@ -197,11 +213,16 @@ def screenadd(driver,addtitle,files,selectproduct):
     sleep(2)
     driver.find_element(*screen3).send_keys(addtitle)
     driver.implicitly_wait(30)
-    driver.find_element(*screen4).click()
+    #旧版本截图
+    # driver.find_element(*screen4).click()
+    # sleep(2)
+    # pyautogui.write(files)
+    # sleep(2)
+    # pyautogui.press('enter',2)
+    #新版本截图
+    files=handle_screenshot(driver)
+    driver.find_element(*screen4).send_keys(files)
     sleep(2)
-    pyautogui.write(files)
-    sleep(2)
-    pyautogui.press('enter',2)
     WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '//p[text()="上传成功！"]')))
     driver.find_element(*screen5).send_keys(selectproduct)
     sleep(2)
@@ -256,11 +277,16 @@ def lingxiassistantadd(driver,addtitle,files,selectproduct,lingxiurl):
     driver.implicitly_wait(30)
     driver.find_element(*lingxi4).click()
     sleep(2)
-    driver.find_element(*lingxi5).click()
+    #旧版本截图
+    # driver.find_element(*lingxi5).click()
+    # sleep(2)
+    # pyautogui.write(files)
+    # sleep(2)
+    # pyautogui.press('enter',2)
+    #新版本截图
+    files=handle_screenshot(driver)
+    driver.find_element(*lingxi5).send_keys(files)
     sleep(2)
-    pyautogui.write(files)
-    sleep(2)
-    pyautogui.press('enter',2)
     WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, '//p[text()="上传成功！"]')))
     driver.find_element(*lingxi6).send_keys(lingxiurl)
     sleep(2)

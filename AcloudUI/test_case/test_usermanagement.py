@@ -1,6 +1,7 @@
 import time
 from time import sleep
 import ddddocr
+from selenium.webdriver.chrome.options import Options
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -17,7 +18,8 @@ useraccount="15018066688"
 #用户列表-重置密码
 rerpassword="ab123456+"
 #订单列表/用户云机列表-用户账号
-useraccount2="15013957569"
+# useraccount2="15013957569"
+useraccount2="18124457029"
 #云手机实例名称
 # cloudmobilename="A2号产品"
 
@@ -37,6 +39,14 @@ class test_A(unittest.TestCase):
         # res = ocr.classification(image)
         # cloudcode(cls.driver, res)
         cls.driver.implicitly_wait(10)
+
+    # #调试模式
+    # @classmethod
+    # def setUpClass(cls) -> None:
+    #     options = Options()
+    #     options.add_experimental_option("debuggerAddress", "127.0.0.1:9527")
+    #     cls.driver = webdriver.Chrome(options=options)
+
 
     @classmethod
     def tearDownClass(cls) -> None:
@@ -119,7 +129,7 @@ class test_A(unittest.TestCase):
         """分配云机"""
         cmsadd(self.driver,useraccount2)
         try:
-            end = WebDriverWait(self.driver, 3).until(
+            end = WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, '//p[text()="新增成功"]')))
             self.assertEqual("新增成功", end.text)
             logging.info("test_usermanagement.py:test_A08:SUCCESS")

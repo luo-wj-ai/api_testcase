@@ -54,7 +54,7 @@ python test_all.py
 ②运行UI测试，直接在api的目录即可
 python -m unittest AcloudUI.test_case.test_usermanagement
 ③调试模式-直接调用当前浏览器
-cmd执行：chrome.exe --remote-debugging-port=9527 --user-data-dir="C:\Program Files\Google\Chrome\Application"
+cmd执行（无痕）：chrome.exe --remote-debugging-port=9527 --user-data-dir="C:\Program Files\Google\Chrome\Application"
 options = Options()
 options.add_experimental_option("debuggerAddress", "127.0.0.1:9527")
 cls.driver = webdriver.Chrome(options=options)
