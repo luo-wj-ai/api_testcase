@@ -43,7 +43,7 @@ class test_D(unittest.TestCase):
         cls.driver = webdriver.Chrome()
         cls.driver.maximize_window()
         cls.driver.get('https://koophone-cc.cmtest.xyz:8080/cloud-phone-admin/#/login')
-        cloudlogin(cls.driver, "luoweijie", "Luoweijie:123")
+        cloudlogin(cls.driver, "luoweijie", "Password:123")
         # img = cls.driver.find_element(By.XPATH, '//*[@id="app"]/div/div/form/div[3]/div/div[2]/img')
         # img.screenshot("2.png")
         # ocr = ddddocr.DdddOcr(old=True)
