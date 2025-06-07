@@ -1,60 +1,10 @@
-# import subprocess
-# import os
-# import shutil
-# import time
-#
-# TEST_CASES_DIR = "test_case"
-# ALLURE_RESULTS_DIR = "report/reportallure"
-# ALLURE_REPORT_DIR = "report/reportallures"
-#
-# def clean_previous_results():
-#     """
-#     清理之前生成的Allure报告数据和最终报告目录，以确保每次生成的报告都是全新的。
-#     """
-#     if os.path.exists(ALLURE_RESULTS_DIR):
-#         shutil.rmtree(ALLURE_RESULTS_DIR)
-#     if os.path.exists(ALLURE_REPORT_DIR):
-#         shutil.rmtree(ALLURE_REPORT_DIR)
-#
-#     os.makedirs(ALLURE_RESULTS_DIR)
-#     os.makedirs(ALLURE_REPORT_DIR)
-#
-# def run_tests_and_generate_report():
-#     """
-#     运行测试用例并生成Allure报告的主要函数。
-#     """
-#     # 运行pytest测试用例并生成Allure报告数据
-#     # pytest_command = f"pytest {TEST_CASES_DIR} --alluredir={ALLURE_RESULTS_DIR}"
-#     pytest_command = f"pytest {TEST_CASES_DIR}/test_Ausermanagement.py --alluredir={ALLURE_RESULTS_DIR}"
-#     # pytest_command = f"pytest {TEST_CASES_DIR}/test_order.py::test_case1 --alluredir={ALLURE_RESULTS_DIR}"
-#     subprocess.run(pytest_command, shell=True)
-#
-#     # 等待一段时间，确保报告数据已完全生成（可根据实际情况调整等待时间）
-#     time.sleep(2)
-#
-#     # 使用Allure命令行工具生成最终的Allure报告
-#     allure_command = f"allure generate {ALLURE_RESULTS_DIR} -o {ALLURE_REPORT_DIR}"
-#     subprocess.run(allure_command, shell=True)
-#
-# if __name__ == '__main__':
-#     clean_previous_results()
-#     run_tests_and_generate_report()
-#
-# '''使用命令生成allure报告'''
-# # --alluredir','../reportre/reportallure
-# # allure generate  ../report/reportallure -o ./reporthtml/ --clean
-#
-# # --html=../reportre/20241128html.html
+"""
+每次运行测试都会在report目录下创建一个新的时间戳目录（如"2025年05月20日14时20分30秒123456毫秒测试报告"）
 
+每个时间戳目录下会有reportallure（存放原始报告数据）和reportallures（存放生成的HTML报告）两个子目录
 
-###上面都是久方法，每次只会生成一个测试报告，历史测试报告不会保存
-
-###下面功能
-# 每次运行测试都会在report目录下创建一个新的时间戳目录（如"2025年05月20日14时20分30秒123456毫秒测试报告"）
-#
-# 每个时间戳目录下会有reportallure（存放原始报告数据）和reportallures（存放生成的HTML报告）两个子目录
-#
-# 历史报告不会被覆盖，方便追溯和比较不同时间的测试结果
+历史报告不会被覆盖，方便追溯和比较不同时间的测试结果
+"""
 import subprocess
 import os
 import shutil
@@ -112,16 +62,18 @@ def run_tests_and_generate_report():
 
     # 运行pytest测试用例并生成Allure报告数据
     # pytest_command = f"pytest {TEST_CASES_DIR}/test_order.py --alluredir={allure_results_dir}"
-    pytest_command = f"pytest {TEST_CASES_DIR} --alluredir={allure_results_dir}"  # 运行所有测试用例
-    # pytest_command = f"pytest {TEST_CASES_DIR}/test_order.py::test_case8 --alluredir={allure_results_dir}"  # 运行单个测试用例
+    # pytest_command = f"pytest {TEST_CASES_DIR} --alluredir={allure_results_dir}"  # 运行所有测试用例
+    pytest_command = f"pytest {TEST_CASES_DIR}/api_testcase/test_ai_assistant.py --alluredir={allure_results_dir}"  # 运行单个测试用例
     subprocess.run(pytest_command, shell=True)
 
     # 等待一段时间，确保报告数据已完全生成
     time.sleep(2)
 
     # 使用Allure命令行工具生成最终的Allure报告
+    """
     allure_command = f"allure generate {allure_results_dir} -o {allure_report_dir}"
     subprocess.run(allure_command, shell=True)
+    """
 
 
 if __name__ == '__main__':
