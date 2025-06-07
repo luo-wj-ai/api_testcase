@@ -14,7 +14,7 @@ def Get_Authorization():
     }
     upss = {
         "loginAccount": "luoweijie",
-        "password": "Luoweijie:123",
+        "password": "Password:123",
         "verificateKey": "lzSNkXaTHZFss-Oa8dfK0"
    }
     res = requests.post(url=url, json=upss, headers=headers)
@@ -43,7 +43,7 @@ def Get_Authorization_new():
     }
     payload = {
         "loginAccount": "luoweijie",
-        "password": "Luoweijie:123",
+        "password": "Password:123",
         "verificateKey": "lzSNkXaTHZFss-Oa8dfK0"
     }
 
