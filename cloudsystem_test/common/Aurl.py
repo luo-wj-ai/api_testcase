@@ -1,6 +1,6 @@
 
 '''''广州测试环境'''''
-# baseurl="http://cc-hwy.cmtest.xyz"
+baseurl02="https://koophone-cc.cmtest.xyz"
 baseurl="https://koophone-cc.cmtest.xyz:8080"
 
 '''使用jar包获取签名'''

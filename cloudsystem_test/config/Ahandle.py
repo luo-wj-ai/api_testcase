@@ -5,6 +5,7 @@ import json
 from cloudsystem_test.common.Aheaders import Token
 from cloudsystem_test.common.Aurl import baseurl
 from cloudsystem_test.config.存储token值 import read_yamlm,clear_yamlm
+from cloudsystem_test.utils.RequestHandler import RequestHandler
 
 '''验证token是否失效'''
 class test_CP:
@@ -22,6 +23,7 @@ class test_CP:
         # else:
         clear_yamlm()
         Token()
+
 #     '''获取OS临时票据'''
 #     def tmktoken(self):
 #         test_CP().test_username()
@@ -55,26 +57,23 @@ class test_CP:
 #         accesstoken=ass["data"]["accessToken"]
 #         return accesstoken
 #
-# '''设备锁RSA加密'''
-# def devicersa():
-#     url = "http://127.0.0.1:8899/mock/rsa/encrypt"
-#
-#     payload = json.dumps({
-#       "et": "1",
-#       "encryptText": randint(1000,9999),
-#       "publicKey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCfgZTjlrVJIsRRc4aBVlfahT3xWh48nnB/vN1XMjGWI8qG51yiFbtknZPUczA37GFvU898Y4ZVsbYNP8hxbSYP64j/uPzonswgJRqb5+0Fo5MLjLqy3VzU6ypsALxhQMngP3LfW77WUlmCUkxCa+4AJrnvapE4ZGYoyJSe2xRPwwIDAQAB"
-#     })
-#     headers = {
-#       'Content-Type': 'application/json'
-#     }
-#
-#     response = requests.request("POST", url, headers=headers, data=payload)
-#     # print(response.text)
-#     result = response.text
-#     result = json.loads(result)
-#     password=result["encrypt"]
-#     return password
-#
+'''RSA加密'''
+def Device_Rsa(phone_number):
+    url = "http://sbo.cmtest.xyz/cloudphone-sign/mock/rsa/encrypt"
+
+    data = json.dumps({
+      "et": "0",
+      "encryptText": phone_number,
+      "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvtQpvb5Z5qihpeEugZWe8zggWhM4n9w4miKWkYQXN1V69O3OPWo9IegaQf7rtK8PeI9jItQQU/o8Tb7wgPCX0hWHnDIsTr3mndshmgqL907i4LkLiYzB33NWUG46LAFe/yfxexLtDk1r3M+TnuynZmqXfloTovqR1IW5YZghmTjdpAkDp4094U5TRBy+Iuvw3x4la9cLEYc1ysKhzJAjCj7xWHXNS8rngiy727UtopyUXR8PZjBX/hiwgKZWD3hNnAvxMuRpF8LP9dugvSKsFE3vV7mdd6wVcgMgyiOFX3NFXpJRbKCVl6EDfQmT1YbddowV6MzN0bKSASDpnFvZdwIDAQAB"
+    })
+    headers = {
+        'Content-Type': 'application/json'
+    }
+    response = RequestHandler.send_request("POST", url, data=data, headers=headers)
+
+    encrypt_value = RequestHandler.extract_field(response, "encrypt")
+    return encrypt_value
+
 # '''登录RSA加密'''
 # def loginrsa():
 #     url = "http://127.0.0.1:8899/mock/rsa/encrypt"
@@ -111,3 +110,5 @@ class test_CP:
 #         else:
 #             clear_yamlm2()
 #             Token21()
+if __name__ == '__main__':
+    print(Device_Rsa("13811781178"))
