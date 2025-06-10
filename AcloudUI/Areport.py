@@ -13,11 +13,11 @@ if __name__ == '__main__':
     # 创建一个加载测试用例的对象
     loader = unittest.TestLoader()
     # 加载要测试的测试用例
-    suite.addTest(loader.loadTestsFromTestCase(test_A))
+    # suite.addTest(loader.loadTestsFromTestCase(test_A))
     # suite.addTest(loader.loadTestsFromTestCase(test_B))
     # suite.addTest(loader.loadTestsFromTestCase(test_C))
     # suite.addTest(loader.loadTestsFromTestCase(test_D))
-    # suite.addTest(loader.loadTestsFromTestCase(test_E))
+    suite.addTest(loader.loadTestsFromTestCase(test_E))
     # 生成新的文件目录
     newfilepath = '../AcloudUI/report/' + filenamechange('.html')
     # 运行并生成报告

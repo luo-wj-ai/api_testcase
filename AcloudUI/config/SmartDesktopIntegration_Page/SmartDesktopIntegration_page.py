@@ -16,6 +16,10 @@ class SmartDesktopIntegration_Page:
         self.ui.send_keys(Loc.whitelist04, info)
         self.ui.click(Loc.whitelist05)
 
+    #重置搜索
+    def reset_search_whitelist(self):
+        self.ui.click(Loc.whitelist06)
+
     """布局文件管理"""
     #进入桌面布局页面
     def enter_layoutfile(self):
@@ -26,6 +30,10 @@ class SmartDesktopIntegration_Page:
         self.ui.send_keys(Loc.layoutfile02, info)
         self.ui.click(Loc.layoutfile03)
 
+    #重置搜索
+    def reset_search_layoutfile(self):
+        self.ui.click(Loc.layoutfile04)
+
     """桌面布局管理"""
     #进入桌面布局页面
     def enter_desktoplayout(self):
@@ -35,6 +43,10 @@ class SmartDesktopIntegration_Page:
     def search_desktoplayout(self, info):
         self.ui.send_keys(Loc.desktoplayout02, info)
         self.ui.click(Loc.desktoplayout03)
+
+    #重置搜索
+    def reset_search_desktoplayout(self):
+        self.ui.click(Loc.desktoplayout04)
     """桌面引导管理"""
     #进入桌面引导页面
     def enter_desktopguide(self):
@@ -44,6 +56,10 @@ class SmartDesktopIntegration_Page:
     def search_desktopguide(self, info):
         self.ui.send_keys(Loc.desktopguide02, info)
         self.ui.click(Loc.desktopguide03)
+
+    #重置搜索
+    def reset_search_desktopguide(self):
+        self.ui.click(Loc.desktopguide04)
     """娱乐文件管理"""
     #进入娱乐页面
     def enter_entertainment(self):
@@ -53,6 +69,9 @@ class SmartDesktopIntegration_Page:
     def search_entertainment(self, info):
         self.ui.send_keys(Loc.entertainment02, info)
         self.ui.click(Loc.entertainment03)
+    #重置搜索
+    def reset_search_entertainment(self):
+        self.ui.click(Loc.entertainment04)
     """配置信息管理"""
     #进入配置信息页面
     def enter_configinfo(self):
@@ -62,4 +81,7 @@ class SmartDesktopIntegration_Page:
     def search_configinfo(self, info):
         self.ui.send_keys(Loc.configinfo02, info)
         self.ui.click(Loc.configinfo03)
+    #重置搜索
+    def reset_search_configinfo(self):
+        self.ui.click(Loc.configinfo04)
 
