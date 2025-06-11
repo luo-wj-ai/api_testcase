@@ -1,6 +1,8 @@
 import json
 import allure
 import requests
+
+from cloudsystem_test.common.Aheaders import Get_Authorization_new
 from cloudsystem_test.common.Aurl import baseurl02
 from cloudsystem_test.config.Ahandle import Device_Rsa
 from cloudsystem_test.utils.RequestHandler import RequestHandler
@@ -8,9 +10,22 @@ from cloudsystem_test.utils.ResponseValidator import ResponseValidator
 
 phone_number=18124457029
 """用户注销"""
+
 @allure.title("用例编号：CJHA1 用例名称：发起注销")
 def test_case01():
-    """接口有问题，待排查"""
+    url = "https://koophone-cc.cmtest.xyz:8080/portal/user/sms/deactivate"
+    payload = {
+        "workId": "123456789551234567895522",
+        "userId": "1927173769754050562",
+        "subsAccount": phone_number
+    }
+    headers = {
+        "Authorization": Get_Authorization_new(),
+        "csrfToken": "null",
+        "Content-Type": "application/json;charset=UTF-8"
+    }
+    response = RequestHandler.send_request("POST", url, data=json.dumps(payload), headers=headers)
+    ResponseValidator.assert_field_in_response(response, "header.errMsg", "成功")
     return None
 
 
